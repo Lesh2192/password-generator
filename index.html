@@ -1,54 +1,54 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Générateur de Mots de Passe</title>
+    <title>Password Generator</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <h1>Générateur de Mots de Passe</h1>
+        <h1>Password Generator</h1>
         
-        <label for="length">Longueur :</label>
+        <label for="length">Length:</label>
         <input type="number" id="length" value="12" min="1" max="20">
 
-        <h3>Options de Caractères</h3>
+        <h3>Character Options</h3>
         <div>
             <input type="checkbox" id="uppercase" checked>
-            <label for="uppercase">Lettres Majuscules</label>
+            <label for="uppercase">Uppercase Letters</label>
             <input type="number" id="count-uppercase" value="2" min="0" max="20" style="width: 50px;">
         </div>
 
         <div>
             <input type="checkbox" id="lowercase" checked>
-            <label for="lowercase">Lettres Minuscules</label>
+            <label for="lowercase">Lowercase Letters</label>
             <input type="number" id="count-lowercase" value="2" min="0" max="20" style="width: 50px;">
         </div>
 
         <div>
             <input type="checkbox" id="numbers" checked>
-            <label for="numbers">Chiffres</label>
+            <label for="numbers">Numbers</label>
             <input type="number" id="count-numbers" value="2" min="0" max="20" style="width: 50px;">
         </div>
 
         <div>
             <input type="checkbox" id="symbols" checked>
-            <label for="symbols">Symboles</label>
+            <label for="symbols">Symbols</label>
             <input type="number" id="count-symbols" value="2" min="0" max="20" style="width: 50px;">
         </div>
 
-        <button id="generate">Générer</button>
-        <button id="copy">Copier</button>
-        <button id="save">Sauvegarder</button>
-        <button id="download">Télécharger</button>
-        <button id="toggle-theme">Mode Sombre</button>
+        <button id="generate">Generate</button>
+        <button id="copy">Copy</button>
+        <button id="save">Save</button>
+        <button id="download">Download</button>
+        <button id="toggle-theme">Dark Mode</button>
         
         <h2 id="password"></h2>
         <h3 id="password-strength"></h3>
 
-        <h3>Historique des Mots de Passe</h3>
+        <h3>Password History</h3>
         <ul id="history"></ul>
     </div>
     <script src="script.js"></script>
