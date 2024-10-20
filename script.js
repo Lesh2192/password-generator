@@ -1,4 +1,3 @@
-// Fonction pour ajouter une animation de fade
 function fadeIn(element, duration = 500) {
   element.style.opacity = 0;
   element.style.display = "block";
@@ -6,7 +5,6 @@ function fadeIn(element, duration = 500) {
   setTimeout(() => (element.style.opacity = 1), 10);
 }
 
-// Fonction pour créer une animation de shake
 function shakeElement(element) {
   element.style.animation = "shake 0.5s ease-in-out";
   element.addEventListener("animationend", () => {
@@ -14,27 +12,25 @@ function shakeElement(element) {
   });
 }
 
-// Fonction pour sauvegarder l'historique
 function saveHistory() {
   const historyList = document.getElementById("history");
   const passwords = Array.from(historyList.children).map((item) =>
-    item.textContent.replace("Supprimer", "").trim()
+    item.textContent.replace("Delete", "").trim()
   );
   localStorage.setItem("passwordHistory", JSON.stringify(passwords));
 }
 
-// Fonction pour charger l'historique
 function loadHistory() {
   const savedPasswords =
     JSON.parse(localStorage.getItem("passwordHistory")) || [];
   const historyList = document.getElementById("history");
-  historyList.innerHTML = ""; // Clear existing history
+  historyList.innerHTML = ""; 
   savedPasswords.forEach((password) => {
     const listItem = document.createElement("li");
     listItem.textContent = password;
 
     const deleteButton = document.createElement("button");
-    deleteButton.textContent = "Supprimer";
+    deleteButton.textContent = "Delete";
     deleteButton.className = "delete-btn";
     deleteButton.onclick = function () {
       listItem.style.opacity = "0";
@@ -92,19 +88,19 @@ function displayPasswordStrength(password) {
   let color = "";
 
   if (result.score >= 80) {
-    message = "Force du mot de passe : Excellente";
+    message = "Password Strength : Excellent";
     color = "#2ecc71";
   } else if (result.score >= 60) {
-    message = "Force du mot de passe : Forte";
+    message = "FPassword Strength : Good";
     color = "#27ae60";
   } else if (result.score >= 40) {
-    message = "Force du mot de passe : Moyenne";
+    message = "Password Strength : Mid";
     color = "#f1c40f";
   } else if (result.score >= 20) {
-    message = "Force du mot de passe : Faible";
+    message = "Password Strength : Low";
     color = "#e67e22";
   } else {
-    message = "Force du mot de passe : Très faible";
+    message = "Password Strength : Very Low";
     color = "#e74c3c";
   }
 
@@ -122,7 +118,7 @@ function addToHistory(password) {
   listItem.style.transform = "translateY(20px)";
 
   const deleteButton = document.createElement("button");
-  deleteButton.textContent = "Supprimer";
+  deleteButton.textContent = "Delete";
   deleteButton.className = "delete-btn";
   deleteButton.onclick = function () {
     listItem.style.opacity = "0";
@@ -237,18 +233,18 @@ document.getElementById("copy").addEventListener("click", function () {
     navigator.clipboard
       .writeText(password)
       .then(() => {
-        this.textContent = "Copié !";
+        this.textContent = "Copy !";
         this.style.backgroundColor = "var(--primary)";
         this.style.color = "white";
 
         setTimeout(() => {
-          this.textContent = "Copier";
+          this.textContent = "Copy";
           this.style.backgroundColor = "";
           this.style.color = "";
         }, 1500);
       })
       .catch((err) => {
-        console.error("Erreur lors de la copie : ", err);
+        console.error("Error ! : ", err);
         shakeElement(this);
       });
   } else {
@@ -265,7 +261,7 @@ document.getElementById("download").addEventListener("click", function () {
   }
 
   const passwords = Array.from(historyList.children)
-    .map((item) => item.textContent.replace("Supprimer", "").trim())
+    .map((item) => item.textContent.replace("Delete", "").trim())
     .join("\n");
 
   const blob = new Blob([passwords], { type: "text/plain" });
@@ -280,12 +276,12 @@ document.getElementById("download").addEventListener("click", function () {
   URL.revokeObjectURL(url);
 
   // Animation de confirmation
-  this.textContent = "Téléchargé !";
+  this.textContent = "Download !";
   this.style.backgroundColor = "var(--primary)";
   this.style.color = "white";
 
   setTimeout(() => {
-    this.textContent = "Télécharger";
+    this.textContent = "Download";
     this.style.backgroundColor = "";
     this.style.color = "";
   }, 1500);
